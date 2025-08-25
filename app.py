@@ -10,6 +10,10 @@ def home():
 def about():
     return "THIS IS ABOUT PAGE"
 
+@app.route('/contact')
+def contact():
+    return "THIS IS Contact PAGE"
+
 @app.route('/connect',methods=['GET','POST'])
 def connect():
     if request.method == 'POST':
