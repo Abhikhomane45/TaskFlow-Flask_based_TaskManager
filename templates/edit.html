@@ -1,12 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Edit Task</h1>
+<div class="header">
+    <h1><i class="fas fa-edit"></i> Edit Task</h1>
+    <p>Update your task details</p>
+</div>
 
-<form method="POST">
-    <input type="text" name="task" value="{{ task.name }}" required>
-    <input type="submit" value="Update">
-</form>
-
-<a href="{{ url_for('index') }}">Back to Task List</a>
+<div class="card">
+    <form method="POST" class="task-form">
+        <div class="form-group">
+            <label for="task">Task Name</label>
+            <input type="text" name="task" value="{{ task.name }}" required>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select name="category">
+                    <option value="Work" {% if task.category == 'Work' %}selected{% endif %}>Work</option>
+                    <option value="Personal" {% if task.category == 'Personal' %}selected{% endif %}>Personal</option>
+                    <option value="Study" {% if task.category == 'Study' %}selected{% endif %}>Study</option>
+                    <option value="Health" {% if task.category == 'Health' %}selected{% endif %}>Health</option>
+                    <option value="Other" {% if task.category == 'Other' %}selected{% endif %}>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <select name="priority">
+                    <option value="low" {% if task.priority == 'low' %}selected{% endif %}>Low Priority</option>
+                    <option value="medium" {% if task.priority == 'medium' %}selected{% endif %}>Medium Priority</option>
+                    <option value="high" {% if task.priority == 'high' %}selected{% endif %}>High Priority</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Update Task
+            </button>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                <i class="fas fa-times"></i> Cancel
+            </a>
+        </div>
+    </form>
+</div>
 {% endblock %}

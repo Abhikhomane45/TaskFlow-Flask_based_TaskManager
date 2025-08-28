@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "gym",
+        "category": "Personal",
+        "priority": "medium",
+        "done": true,
+        "created_at": "2025-08-28 19:53"
+    },
+    {
+        "id": 2,
+        "name": "college",
+        "category": "Study",
+        "priority": "high",
+        "done": false,
+        "created_at": "2025-08-28 19:55"
+    }
+]
