@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Task Manager</h1>
+
+<form method="POST">
+    <input type="text" name="task" placeholder="Add a new task" required>
+    <input type="submit" value="Add">
+</form>
+
+<ul>
+    {% for task in tasks %}
+        <li class="{{ 'done' if task.done else '' }}">
+            {{ task.name }}
+            <span>
+                <a href="{{ url_for('toggle', task_id=loop.index0) }}">
+                    {% if task.done %}Undo{% else %}Done{% endif %}
+                </a>
+                <a href="{{ url_for('edit', task_id=loop.index0) }}">Edit</a>
+                <a href="{{ url_for('delete', task_id=loop.index0) }}">Delete</a>
+            </span>
+        </li>
+    {% else %}
+        <li>No tasks yet!</li>
+    {% endfor %}
+</ul>
+{% endblock %}
